@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# A script that automates listening on port 80
+
+check_port() {
+    nc -z localhost "$1"
+}
+
+if ! check_port 80; then
+    echo "Port 80 is not open. Starting the server..."
+    sudo systemctl start nginx
+    echo "Server started successfully"
+else
+    echo "Port 80 is already open. No action needed."
+fi
