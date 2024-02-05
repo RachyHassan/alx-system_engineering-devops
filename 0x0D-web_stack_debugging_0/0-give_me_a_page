@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#command used to fix the port error
+
+service apache2 start
