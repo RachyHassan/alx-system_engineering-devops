@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# A script that accepts one command and runs the whoami in 7 lines
+if [ $# -ne 1 ]
+then
+    exit 1
+fi
+sudo -u "$1" whoami
