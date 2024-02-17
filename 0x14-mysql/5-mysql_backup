@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# A bash script to back up mysql databases
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <mysql_password>"
+    exit 1
+fi
+
+backup_file="backup.sql"
+mysqldump -u root -p"$1" --all-databases > "$backup_file"
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to create MySQL dump."
+    exit 1
+fi
+
+current_date=$(date +'%d-%m-%Y')
+
+archive_name="${current_date}.tar.gz"
+#compress MySQL dump into tar.gz archive
+tar -czf "$archive_name" "$backup_file"
