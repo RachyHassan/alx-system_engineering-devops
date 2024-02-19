@@ -3,7 +3,13 @@
  A python script that exports data in Json format.
  Requirements:
     Records all tasks from all employees
-    Format must be: { "USER_ID": [ {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ... ], "USER_ID": [ {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, {"username": "USERNAME", "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ... ]}
+    Format must be: { "USER_ID": [ {"username": "USERNAME", "task":
+    "TASK_TITLE", "completed": TASK_COMPLETED_STATUS},
+    {"username": "USERNAME", "task": "TASK_TITLE",
+    "completed": TASK_COMPLETED_STATUS}, ... ],
+    "USER_ID":[ {"username": "USERNAME", "task": "TASK_TITLE",
+    "completed": TASK_COMPLETED_STATUS}, {"username": "USERNAME",
+    "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS}, ... ]}
     File name must be: todo_all_employees.json
  """
 
@@ -23,9 +29,9 @@ def fetch_all_user():
 
     data_to_export[user_id] = [
             {
+                "username": user.get("username"),
                 "task": todo.get("title"),
                 "completed": todo.get("completed"),
-                "username": user.get("username"),
                 }
             for todo in todo_response
             ]

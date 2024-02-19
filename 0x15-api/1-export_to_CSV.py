@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     username = user_response.get("username")
 
-    parameters = {"user_id":user_id}
+    parameters = {"user_id": user_id}
 
     todos = (requests.get(url + "todos", params=parameters)).json()
 

@@ -4,7 +4,10 @@ A python script that exports data in the Json format
 Requirements:
 
     Records all tasks that are owned by this employee
-    Format must be: { "USER_ID": [{"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"}, {"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"}, ... ]}
+    Format must be: { "USER_ID": [{"task": "TASK_TITLE",
+    "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"},
+    {"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS,
+    "username": "USERNAME"}, ... ]}
     File name must be: USER_ID.json
 """
 
@@ -22,10 +25,12 @@ if __name__ == "__main__":
 
     parameters = {"userId": user_id}
     todos = requests.get(url + "todos", params=parameters).json()
-    
+
     data_to_export = {user_id: []}
     for todo in todos:
-        task_info = {"task": todo.get("title"),"completed": todo.get("completed"),"username": username}
+        task_info = {"task": todo.get("title"),
+                     "completed": todo.get("completed"),
+                     "username": username}
         data_to_export[user_id].append(task_info)
 
     with open("{}.json".format(user_id), "w") as jsonfile:
