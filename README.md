@@ -1,2 +1,1 @@
-#!/bin/bash
-Software engineer in the making
+0x0E-web_stack_debugging_1
