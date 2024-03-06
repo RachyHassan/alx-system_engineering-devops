@@ -1,0 +1,25 @@
+[34m
+* Datadog Agent 7 install script v1.27.0
+[0m
+[34m
+* Installing apt-transport-https, curl and gnupg
+[0m
+Hit:1 https://deb.nodesource.com/node_14.x jammy InRelease
+Hit:2 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu jammy InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:6 https://download.docker.com/linux/ubuntu jammy InRelease
+Ign:7 https://apt.datadoghq.com stable InRelease
+Hit:8 https://apt.datadoghq.com stable Release
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (7.81.0-1ubuntu1.15).
+gnupg is already the newest version (2.2.27-3ubuntu2.1).
+apt-transport-https is already the newest version (2.4.11).
+0 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
+[34m
+* Installing APT package sources for Datadog
+[0m
