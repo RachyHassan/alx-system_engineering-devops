@@ -1,0 +1,41 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default server;
+    
+    #Server IP is the domain name
+    server_name 52.91.132.212
+
+    #http response
+    add_header X-Served-By 404671-web-01;
+
+    # serve /airbnb-onepage/ route on Airbnb v2    
+    location = /airbnb-onepage/ {
+         proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
+
+    # serve /number_odd_or_even/ route on Airbnb v2
+    location = /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+    }
+
+    # serve /api route on Airbnb v3
+    location = /api {
+        proxy_pass http://127.0.0.1:5002/api;
+    }
+
+    # configure /2-hbnb on Airbnb v4
+    location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
+
+    # serve static content for Airbnb v4
+    location /static {
+        alias web_dynamic/static/;
+    }
+
+    error_page 404 /404.html;
+    location  /404 {
+        root /var/www/html;
+        internal;
+    }
+}   
